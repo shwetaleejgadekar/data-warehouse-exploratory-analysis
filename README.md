@@ -1,6 +1,21 @@
-# Yelp Data Warehouse — Team 5
+# Yelp Data Warehouse
 
 A full end-to-end data warehousing project built on the **Yelp Academic Dataset**, completed as part of a BI & Data Warehousing course at Santa Clara University (Fall 2024). The project covers every stage of the data engineering lifecycle: raw data ingestion, JSON-to-CSV conversion, data quality validation, dimensional modeling, cloud loading into Snowflake, OLAP analysis, and sentiment analysis.
+
+---
+
+## Tech Stack
+
+| Layer | Tool |
+|---|---|
+| Development environment | Google Colab |
+| Data processing | Python, Pandas, NumPy |
+| Visualization | Matplotlib, Seaborn |
+| File format (export) | Parquet |
+| Cloud data warehouse | Snowflake |
+| SQL interface | SnowSQL CLI |
+| Sentiment analysis | VADER (`vaderSentiment`) |
+| Intermediate storage | Google Drive |
 
 ---
 
@@ -502,71 +517,4 @@ sample_df['sentiment_star_equiv'] = (sample_df['sentiment_score'] + 1) / 2 * 4 +
 
 ---
 
-## Tech Stack
-
-| Layer | Tool |
-|---|---|
-| Development environment | Google Colab |
-| Data processing | Python, Pandas, NumPy |
-| Visualization | Matplotlib, Seaborn |
-| File format (export) | Parquet |
-| Cloud data warehouse | Snowflake |
-| SQL interface | SnowSQL CLI |
-| Sentiment analysis | VADER (`vaderSentiment`) |
-| Intermediate storage | Google Drive |
-
----
-
-## Repository Structure
-
-```
-yelp-dw-project/
-├── notebooks/
-│   └── DW_TEAM_5.ipynb          # Full project notebook (Google Colab)
-├── docs/
-│   └── data_dictionary.md       # Column-level definitions for all tables
-├── data/
-│   ├── raw/                     # Source JSON files (not committed — 8.65 GB)
-│   └── processed/               # Cleaned CSVs and Parquet outputs (not committed)
-├── src/                         # Extracted Python scripts (optional refactor)
-├── sql/                         # Snowflake DDL and OLAP query files
-├── requirements.txt
-├── .gitignore
-└── README.md
-```
-
----
-
-## Setup and Reproduction
-
-### 1. Clone the repo
-```bash
-git clone https://github.com/<your-org>/yelp-dw-project.git
-cd yelp-dw-project
-```
-
-### 2. Install dependencies
-```bash
-pip install -r requirements.txt
-```
-
-### 3. Download the dataset
-Get the Yelp Academic Dataset from https://business.yelp.com/data/resources/open-dataset/ and place the 5 JSON files under `data/raw/`.
-
-### 4. Run the notebook
-Open `notebooks/DW_TEAM_5.ipynb` in Google Colab. Update the Google Drive base path variable at the top of the notebook to point to your own Drive folder where CSVs and Parquet files will be written.
-
-### 5. Load to Snowflake
-After the Parquet files are written to Drive, connect with SnowSQL and run the DDL and COPY commands from the notebook's Snowflake section (or from `sql/` once those scripts are extracted).
-
-```bash
-snowsql -a <account_identifier> -u <username>
-```
-
-> **Note:** Raw JSON files, all intermediate CSVs, and Parquet outputs are excluded from version control via `.gitignore`. Total uncompressed data is ~8.65 GB.
-
----
-
-## Team
-
-Team 5 — SCU BI & Data Warehousing Course, Fall 2024
+ SCU BI & Data Warehousing Course, Winter 2026
